@@ -1,5 +1,7 @@
 package trees;
 
+import java.util.Stack;
+
 /**
  * Created by eig on 06/08/17.
  */
@@ -30,18 +32,7 @@ public class LCA
 
     }
 
-    static void inorder(BinaryTree root)
-    {
-        if (root.getLeft() != null)
-        {
-            inorder(root.getLeft());
-        }
-        System.out.println(root.getData());
-        if (root.getRight() != null)
-        {
-            inorder(root.getRight());
-        }
-    }
+
 
     public static void main(String[] args)
     {
@@ -52,7 +43,6 @@ public class LCA
         root.getLeft().setRight(new BinaryTree(5));
         root.getRight().setLeft(new BinaryTree(6));
         root.getRight().setRight(new BinaryTree(7));
-        inorder(root);
         System.out.println(lca(root, root.getLeft().getRight(), root.getRight().getRight()).getData());
     }
 }
