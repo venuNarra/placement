@@ -135,16 +135,17 @@ public class Traversal
     {
         Queue<BinaryTree> queue = new LinkedList<BinaryTree>();
         queue.add(root);
-        while (queue.isEmpty())
+        while (!queue.isEmpty())
         {
-            System.out.println(queue.remove().getData());
-            if (root.getLeft() != null)
+            BinaryTree temp=queue.remove();
+            System.out.println(temp.getData());
+            if (temp.getLeft() != null)
             {
-                queue.add(root.getLeft());
+                queue.add(temp.getLeft());
             }
-            if (root.getRight() != null)
+            if (temp.getRight() != null)
             {
-                queue.add(root.getRight());
+                queue.add(temp.getRight());
             }
         }
 
@@ -159,18 +160,18 @@ public class Traversal
         root.getLeft().setRight(new BinaryTree(5));
         root.getRight().setLeft(new BinaryTree(6));
         root.getRight().setRight(new BinaryTree(7));
-        inorder(root);
-        System.out.println();
-        inoderNR(root);
-        System.out.println();
-        preOrder(root);
-        System.out.println();
-        preOrderNR(root);
-        System.out.println();
-        postOrder(root);
-        System.out.println();
-        postOrderNR(root);
-        System.out.println();
+//        inorder(root);
+//        System.out.println();
+//        inoderNR(root);
+//        System.out.println();
+//        preOrder(root);
+//        System.out.println();
+//        preOrderNR(root);
+//        System.out.println();
+//        postOrder(root);
+//        System.out.println();
+//        postOrderNR(root);
+//        System.out.println();
         leverlOrder(root);
     }
 }
