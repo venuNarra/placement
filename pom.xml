@@ -7,6 +7,19 @@
     <groupId>Placement</groupId>
     <artifactId>placement</artifactId>
     <version>1.0-SNAPSHOT</version>
+<dependencies>
 
-
+<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+<dependency>
+    <groupId>commons-collections</groupId>
+    <artifactId>commons-collections</artifactId>
+    <version>3.2.2</version>
+</dependency>
+		
+		</dependencies>
 </project>

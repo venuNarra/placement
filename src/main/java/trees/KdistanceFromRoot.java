@@ -28,6 +28,6 @@ public class KdistanceFromRoot
         root.getLeft().setRight(new BinaryTree(5));
         root.getRight().setLeft(new BinaryTree(6));
         root.getRight().setRight(new BinaryTree(7));
-        kdistanceFromRoot(root, 0);
+        kdistanceFromRoot(root, 2);
     }
 }

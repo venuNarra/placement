@@ -1,5 +1,6 @@
 package trees;
 
+
 /**
  * Created by eig on 06/08/17.
  */
@@ -36,6 +37,7 @@ public class MaxSumPath
             if (max_value < path[pathLength])
             {
                 max_value = path[pathLength];
+                
                 max_path = path;
 
             }
@@ -43,6 +45,13 @@ public class MaxSumPath
         maxSumPathUtil(root.getLeft(), path, pathLength + 1);
         maxSumPathUtil(root.getRight(), path, pathLength + 1);
 
+    }
+    static int maxSumPathAlt(BinaryTree root) {
+    	if(root==null) 
+    		return 0;
+    	int left=maxSumPathAlt(root.getLeft());
+    	int right=maxSumPathAlt(root.getRight());
+    	return root.getData()+Math.max(left, right);
     }
 
     public static void main(String[] args)
@@ -54,6 +63,9 @@ public class MaxSumPath
         root.getLeft().setRight(new BinaryTree(5));
         root.getRight().setLeft(new BinaryTree(6));
         root.getRight().setRight(new BinaryTree(7));
+       // root.getRight().getRight().setLeft(new BinaryTree(8));
+
         System.out.println(maxSumPath(root));
+        System.out.println(maxSumPathAlt(root));
     }
 }

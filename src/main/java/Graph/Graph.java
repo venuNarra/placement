@@ -1,25 +1,28 @@
-package graph;
+package Graph;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class Graph {
 	private int V;
-	private LinkedList<Integer> adj[];
+	private List<Integer> adj[];
 	
 	Graph(int v){
-		V=v;
-		adj=new LinkedList[v];
+		this.V=v;
+		this.adj=new LinkedList[v];
 		for(int i=0;i<v;i++) {
-			adj[i]=new LinkedList();
+			this.adj[i]=new LinkedList();
 		}
 	}
 	void addEdge(int u, int v) {
-		adj[u].add(v);
+		this.adj[u].add(v);
 	}
 	void BFS(int s) {
 		boolean visited[]= new boolean[V];
-		LinkedList<Integer> queue=new LinkedList<Integer>();
+		Queue<Integer> queue=new LinkedList<Integer>();
 		queue.add(s);
 		while(!queue.isEmpty()) {
 			s=queue.poll();
@@ -62,11 +65,12 @@ public class Graph {
 	}
 	void TopoSortBFS(){
 		int indegree[]=new int[V];
+		
 		for(int i=0;i<V;i++) {
 			for(int v:adj[i])
 				indegree[v]++;
 		}
-		LinkedList<Integer> queue=new LinkedList<Integer>();
+		Queue<Integer> queue=new LinkedList<Integer>();
 		for(int i=0;i<V;i++)
 			if(indegree[i]==0)
 				queue.add(i);
@@ -90,12 +94,14 @@ public class Graph {
 		g.addEdge(5, 2);
 		g.addEdge(5, 0);
 		g.addEdge(4, 0);
-		g.addEdge(4, 1);
+		g.addEdge(1, 4);
 		g.addEdge(2, 3);
 		g.addEdge(3, 1);
 		
-	//g.BFS(2); 
-	//g.DFS(2);
+	g.BFS(5); 
+	System.out.println();
+	g.DFS(5);
+	System.out.println();
 	g.TopoSortBFS();
 		
 	}
