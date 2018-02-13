@@ -81,7 +81,8 @@ public class InMemoryCache<K, T> {
         }
     }
     
-    public Set<String> keys() {
+    @SuppressWarnings("unchecked")
+	public Set<String> keys() {
     	synchronized (cacheMap) {
     		return cacheMap.keySet();
     	}

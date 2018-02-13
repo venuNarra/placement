@@ -84,7 +84,8 @@ public class CacheExample<K, T> {
     }
     
     // CLEANUP method
-    public void cleanup() {
+    @SuppressWarnings("unchecked")
+	public void cleanup() {
         
         long now = System.currentTimeMillis();
         ArrayList<String> deleteKey = null;

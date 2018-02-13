@@ -61,7 +61,7 @@ class Producer implements Runnable{
 class Consumer implements Runnable{
 	List<Integer> sharedList=null;
 	final int MAX_SIZE=5;
-	private int i=0;
+	
 	
 	
 	public Consumer(List<Integer> sharedList) {

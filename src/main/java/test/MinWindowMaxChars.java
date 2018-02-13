@@ -2,7 +2,7 @@ package test;
 
 import java.util.HashMap;
 
-import sun.misc.LRUCache;
+
 
 public class MinWindowMaxChars {
      

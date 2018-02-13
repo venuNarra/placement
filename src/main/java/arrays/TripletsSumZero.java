@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class TripletsSumZero {
+	@SuppressWarnings("unused")
 	private static boolean findTriplets(int a[]) {
 		boolean found = false;
 		for (int i = 0; i < a.length - 2; i++)
@@ -17,6 +18,7 @@ public class TripletsSumZero {
 		return found;
 	}
 
+	@SuppressWarnings("unused")
 	private static void findTripletsSet(int a[]) {
 		Set<Integer> set = new HashSet<Integer>();
 		for (int i = 0; i < a.length - 1; i++) {

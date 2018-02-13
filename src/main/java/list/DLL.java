@@ -12,7 +12,8 @@ public class DLL {
     private class Node {
         int  data;
         Node next;
-        Node prev;
+        @SuppressWarnings("unused")
+		Node prev;
 
         Node(int data) {
             super();

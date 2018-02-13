@@ -50,6 +50,7 @@ public class Solution {
 
 	static void createBST(int[] keys) {
 
+		@SuppressWarnings("unused")
 		int counter = 0;
 		BST root = null;
 		for (int key : keys) {
@@ -65,6 +66,7 @@ public class Solution {
 		System.out.println("called");
 	}
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 

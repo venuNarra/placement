@@ -34,7 +34,7 @@ public class WordBreak {
 
 	public static void main(String[] args) {
 		tree("abcde");
-		//System.out.println(wordBreak("ilikesamsung"));
+		System.out.println(wordBreak("ilikesamsung"));
 	}
 
 }

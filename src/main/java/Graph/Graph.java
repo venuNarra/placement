@@ -1,7 +1,6 @@
 package Graph;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -10,6 +9,7 @@ public class Graph {
 	private int V;
 	private List<Integer> adj[];
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	Graph(int v){
 		this.V=v;
 		this.adj=new LinkedList[v];
