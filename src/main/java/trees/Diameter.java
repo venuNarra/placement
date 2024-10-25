@@ -21,6 +21,7 @@ public class Diameter
 
     static int[] diameterOpt(BinaryTree root)
     {
+        // result[0] = diameter, result[1] = height
         int[] result = new int[]{0, 0};
         if (root == null)
         {
@@ -29,7 +30,7 @@ public class Diameter
         int[] ld = diameterOpt(root.getLeft());
         int[] rd = diameterOpt(root.getRight());
         result[0] = Math.max(ld[1] + rd[1] + 1, Math.max(ld[0], rd[0]));
-        result[1] = Math.max(ld[1], rd[1] + 1);
+        result[1] = Math.max(ld[1], rd[1]) + 1;
         return result;
     }
 

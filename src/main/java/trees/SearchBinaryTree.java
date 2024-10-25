@@ -1,5 +1,7 @@
 package trees;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -19,10 +21,9 @@ public class SearchBinaryTree
         {
             return true;
         }
-        Boolean temp = search(root.getLeft(), data);
-        if (temp)
+        if (search(root.getLeft(), data))  // If its find in the left subtree then return it.
         {
-            return temp;
+            return true;
         }
         else
         {
@@ -37,16 +38,18 @@ public class SearchBinaryTree
         {
             return false;
         }
-        BinaryTree temp;
-        Queue<BinaryTree> queue = new LinkedList<BinaryTree>();
+        //Queue<BinaryTree> queue = new LinkedList<>();
+        Deque<BinaryTree> queue = new ArrayDeque<>();
         queue.add(root);
         while (!queue.isEmpty())
         {
-            temp = queue.remove();
+            BinaryTree temp = queue.poll();
             if (temp.getData() == data)
             {
                 return true;
             }
+
+            // add left & right childs to the queue if exists
             if (temp.getLeft() != null)
             {
                 queue.add(temp.getLeft());

@@ -28,7 +28,6 @@ public class KdistanceFromNode {
 	
 		if(rd!=-1) {
 			rd++;
-			
 			if(rd==k) {
 				System.out.println(root.getData());
 			}else {
@@ -41,7 +40,6 @@ public class KdistanceFromNode {
 	}
 
 	private static void kdistnceFromRoot(BinaryTree root, int k) {
-		// TODO Auto-generated method stub
 		if(root == null) return;
 		if(k==0) {
 			System.out.println(root.getData());

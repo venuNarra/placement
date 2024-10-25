@@ -9,13 +9,13 @@ public class HasPathSum
     {
         if (root == null)
         {
-            return (sum == 0);
+            return false;
+        }
+        if ( root.getLeft() == null && root.getRight() == null)
+        {
+            return ( sum == root.getData());
         }
         int remainingSum = sum - root.getData();
-        if (remainingSum == 0 && root.getLeft() == null && root.getRight() == null)
-        {
-            return true;
-        }
         return hasPathSum(root.getLeft(), remainingSum) || hasPathSum(root.getRight(), remainingSum);
 
     }

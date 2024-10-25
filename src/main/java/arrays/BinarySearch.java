@@ -3,7 +3,8 @@ package arrays;
 public class BinarySearch {
 
 	static int binarySearch(int a[], int n) {
-
+		if(a == null || a.length ==0)
+			return -1;
 		int l = 0, r = a.length - 1;
 		while (l <= r) {
 			int mid = l + (r - l) / 2;

@@ -11,13 +11,12 @@ public class ReversingLevelOrder
 {
     static void reverseLevelOrder(BinaryTree root)
     {
-        Queue<BinaryTree> queue = new LinkedList<BinaryTree>();
-        Stack<BinaryTree> stack = new Stack<BinaryTree>();
-        BinaryTree temp;
+        Queue<BinaryTree> queue = new LinkedList<>();
+        Stack<BinaryTree> stack = new Stack<>();
         queue.add(root);
         while (!queue.isEmpty())
         {
-            temp = queue.peek();
+            BinaryTree temp = queue.poll();
             if (temp.getRight() != null)
             {
                 queue.add(temp.getRight());
@@ -26,8 +25,6 @@ public class ReversingLevelOrder
             {
                 queue.add(temp.getLeft());
             }
-
-            temp = queue.remove();
             stack.push(temp);
         }
 

@@ -20,7 +20,7 @@ public class Size
     static int sizeNR(BinaryTree root)
     {
         int size = 0;
-        Queue<BinaryTree> queue = new LinkedList<BinaryTree>();
+        Queue<BinaryTree> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty())
         {

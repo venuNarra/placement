@@ -22,12 +22,10 @@ public class LCA
         {
             return root;
         }
-        if (left != null)
-        {
-            return left;
-        }
 
-        return right;
+        // return the non-null child
+        return left != null ? left : right;
+
 
     }
 

@@ -19,7 +19,7 @@ public class SumOfAllElements
 
     static int sumNR(BinaryTree root)
     {
-        Queue<BinaryTree> queue = new LinkedList<BinaryTree>();
+        Queue<BinaryTree> queue = new LinkedList<>();
         queue.add(root);
         BinaryTree temp;
         int sum = 0;

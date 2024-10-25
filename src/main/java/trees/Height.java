@@ -25,13 +25,12 @@ public class Height
             return 0;
         }
         int level = 0;
-        Queue<BinaryTree> queue = new LinkedList<BinaryTree>();
+        Queue<BinaryTree> queue = new LinkedList<>();
         queue.add(root);
         queue.add(null);
-        BinaryTree temp;
         while (!queue.isEmpty())
         {
-            temp = queue.remove();
+            BinaryTree temp = queue.poll();
             if (temp == null)
             {
                 level++;
@@ -51,8 +50,6 @@ public class Height
                     queue.add(temp.getRight());
                 }
             }
-
-
         }
         return level;
     }

@@ -1,17 +1,13 @@
 package trees;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 
 public class TopBottomView {
 
 	public class QNode {
 		BinaryTree node;
-		int hd;
+		int hd; // horizontal distance
 
 		public QNode(BinaryTree node, int hd) {
 			super();
@@ -38,8 +34,8 @@ public class TopBottomView {
 	}
 
 	public void topView(BinaryTree root) {
-		Queue<QNode> queue = new LinkedList<QNode>();
-		Set<Integer> set = new HashSet<Integer>();
+		Queue<QNode> queue = new LinkedList<>();
+		Set<Integer> set = new HashSet<>();
 		queue.add(new QNode(root, 0));
 		while (!queue.isEmpty()) {
 			QNode temp = queue.poll();
@@ -61,9 +57,11 @@ public class TopBottomView {
 	}
 
 	public void bottomView(BinaryTree root) {
-		Queue<QNode> queue = new LinkedList<QNode>();
+		Queue<QNode> queue = new LinkedList<>();
 		queue.add(new QNode(root, 0));
-		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		//HashMap<Integer, Integer> map = new HashMap<>();
+		TreeMap<Integer, Integer> map = new TreeMap<>();
+
 		while (!queue.isEmpty()) {
 			QNode temp = queue.poll();
 			BinaryTree node = temp.getNode();
@@ -88,7 +86,7 @@ public class TopBottomView {
 		root.getRight().setRight(new BinaryTree(7));
 		// root.getRight().getRight().setRight(new BinaryTree(8));
 
-	//	test.topView(root);
+		test.topView(root);
 		test.bottomView(root);
 
 	}

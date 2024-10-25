@@ -14,6 +14,7 @@ public class KdistanceFromRoot
         if (k == 0)
         {
             System.out.println(root.getData());
+            return;
         }
         kdistanceFromRoot(root.getLeft(), k - 1);
         kdistanceFromRoot(root.getRight(), k - 1);

@@ -6,42 +6,27 @@ import java.util.Queue;
 /**
  * Created by eig on 06/08/17.
  */
-public class MaxElelment
+public class MaxElement
 {
     static int maxElement(BinaryTree root)
     {
-        int max = Integer.MIN_VALUE;
         if (root == null)
         {
-            return max;
+            return Integer.MIN_VALUE;
         }
         int leftMax = maxElement(root.getLeft());
         int rightMax = maxElement(root.getRight());
-        if (leftMax > rightMax)
-        {
-            max = leftMax;
-        }
-        else
-        {
-            max = rightMax;
-        }
-        if (max < root.getData())
-        {
-            max = root.getData();
-        }
-        return max;
-
+        return Math.max(Math.max(leftMax,rightMax), root.getData());
     }
 
     static int maxElemetNR(BinaryTree root)
     {
         int max = Integer.MIN_VALUE;
-        BinaryTree temp;
-        Queue<BinaryTree> queue = new LinkedList<BinaryTree>();
+        Queue<BinaryTree> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty())
         {
-            temp = queue.remove();
+            BinaryTree temp = queue.poll();
             if (max < temp.getData())
             {
                 max = temp.getData();

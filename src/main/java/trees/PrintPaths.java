@@ -1,5 +1,8 @@
 package trees;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by eig on 06/08/17.
  */
@@ -7,8 +10,22 @@ public class PrintPaths
 {
     static void printPaths(BinaryTree root)
     {
-        int[] path = new int[100];
-        printPathsUtil(root, path, 0);
+       // int[] path = new int[100];
+        // printPathsUtil(root, path, 0);
+        List<Integer> path = new ArrayList<>();
+        printPathsUtils(root, path);
+    }
+
+    static void printPathsUtils(BinaryTree root, List<Integer> path){
+        if(root == null ) return;
+        path.add(root.getData());
+        if(root.getLeft() == null && root.getRight() ==null)
+            System.out.println(path);
+        else {
+            printPathsUtils(root.getLeft(), path);
+            printPathsUtils(root.getRight(), path);
+        }
+        path.remove(path.size()-1);
     }
 
     static void printPathsUtil(BinaryTree root, int[] path, int pathLength)

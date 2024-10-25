@@ -49,9 +49,13 @@ public class MaxSumPath
     static int maxSumPathAlt(BinaryTree root) {
     	if(root==null) 
     		return 0;
-    	int left=maxSumPathAlt(root.getLeft());
+
+        // Recursively calculate the max sum for the left and right subtrees
+        int left=maxSumPathAlt(root.getLeft());
     	int right=maxSumPathAlt(root.getRight());
-    	return root.getData()+Math.max(left, right);
+
+        // Return the current node's value plus the larger of the left or right subtree sums
+        return root.getData()+Math.max(left, right);
     }
 
     public static void main(String[] args)

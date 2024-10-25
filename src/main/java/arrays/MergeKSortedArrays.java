@@ -5,8 +5,8 @@ import java.util.PriorityQueue;
 
 public class MergeKSortedArrays {
 
-	public class ArrayContainer implements Comparable<ArrayContainer> {
-		int array[];
+	public static class ArrayContainer implements Comparable<ArrayContainer> {
+		int[] array;
 		int index;
 
 		public ArrayContainer(int[] array, int index) {
@@ -19,16 +19,8 @@ public class MergeKSortedArrays {
 			return array;
 		}
 
-		public void setArray(int[] array) {
-			this.array = array;
-		}
-
 		public int getIndex() {
 			return index;
-		}
-
-		public void setIndex(int index) {
-			this.index = index;
 		}
 
 		@Override
@@ -40,15 +32,23 @@ public class MergeKSortedArrays {
 	}
 
 	public int[] mergeKsortedArrays(int[][] arr) {
-		PriorityQueue<ArrayContainer> pq = new PriorityQueue<ArrayContainer>();
-		int total = 0;
-		for (int i = 0; i < arr.length; i++) {
-			pq.add(new ArrayContainer(arr[i], 0));
-			total += arr[i].length;
-		}
-		System.out.println(total);
-		int[] result = new int[total];
+		if(arr ==null || arr.length ==0 )
+			return new int[0];
+
+		//min heap using the priority queues
+		PriorityQueue<ArrayContainer> pq = new PriorityQueue<>();
+		int totalLength = 0;
+
+		// Add the first element of each array to the minHeap
+        for (int[] rowArray : arr) {
+            pq.add(new ArrayContainer(rowArray, 0));
+            totalLength += rowArray.length;
+        }
+		System.out.println(totalLength);
+		int[] result = new int[totalLength];
 		int i = 0;
+
+		// process the elements from the priority queue
 		while (!pq.isEmpty()) {
 			ArrayContainer ac = pq.poll();
 			int index = ac.getIndex();

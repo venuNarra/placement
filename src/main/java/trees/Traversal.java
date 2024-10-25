@@ -11,39 +11,36 @@ public class Traversal
 {
     static void inorder(BinaryTree root)
     {
+        // left, data, right
         if (root == null)
-        {
             return;
-        }
-        if (root.getLeft() != null)
-        {
-            inorder(root.getLeft());
-        }
+        inorder(root.getLeft());
         System.out.println(root.getData());
-        if (root.getRight() != null)
-        {
-            inorder(root.getRight());
-        }
+        inorder(root.getRight());
     }
 
     static void inoderNR(BinaryTree root)
     {
-        Stack<BinaryTree> s = new Stack<BinaryTree>();
-        while (true)
-        {
-            while (root != null)
-            {
-                s.push(root);
-                root = root.getLeft();
-            }
-            if (s.isEmpty())
-            {
-                break;
-            }
-            root = s.pop();
-            System.out.println(root.getData());
-            root = root.getRight();
+        if( root == null )
+            return;
+        Stack<BinaryTree> stack = new Stack<>();
+        BinaryTree currentNode = root;
 
+        // Traverse the tree
+        while ( !stack.isEmpty() || currentNode != null )
+        {
+            // Reach the left most subtree
+            while (currentNode != null)
+            {
+                stack.push(currentNode);
+                currentNode = currentNode.getLeft();
+            }
+            // process the node at the top of the stack
+            currentNode = stack.pop();
+            System.out.println(currentNode.getData());
+
+            // Move to right subtree
+            currentNode = currentNode.getRight();
 
         }
     }
@@ -51,10 +48,9 @@ public class Traversal
 
     static void preOrder(BinaryTree root)
     {
+        // data, left, right
         if (root == null)
-        {
             return;
-        }
         System.out.println(root.getData());
         preOrder(root.getLeft());
         preOrder(root.getRight());
@@ -62,89 +58,80 @@ public class Traversal
 
     static void preOrderNR(BinaryTree root)
     {
-        Stack<BinaryTree> stack = new Stack<BinaryTree>();
-        while (true)
-        {
-            while (root != null)
-            {
-                System.out.println(root.getData());
-                stack.push(root);
-                root = root.getLeft();
-            }
-            if (stack.isEmpty())
-            {
-                break;
-            }
-            root = stack.pop();
-            root = root.getRight();
+        if(root == null)
+            return;
+        Stack<BinaryTree> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            // pop the top node and print its value
+            BinaryTree currentNode = stack.pop();
+            System.out.println(currentNode.getData());
+
+            // Trick: push the right first, so that left processed first
+            if(currentNode.getRight() != null)
+                stack.push(currentNode.getRight());
+
+            if(currentNode.getLeft() != null)
+                stack.push(currentNode.getLeft());
+
         }
     }
 
     static void postOrder(BinaryTree root)
     {
-        // left, right, root.data
+        // left, right, data
         if (root == null)
         {
             return;
         }
-        if (root.getLeft() != null)
-        {
-            postOrder(root.getLeft());
-        }
-        if (root.getRight() != null)
-        {
-            postOrder(root.getRight());
-        }
+        postOrder(root.getLeft());
+        postOrder(root.getRight());
         System.out.println(root.getData());
     }
 
     static void postOrderNR(BinaryTree root)
     {
-        Stack<BinaryTree> stack = new Stack<BinaryTree>();
-        while (true)
+        if(root == null)
+            return;
+        Stack<BinaryTree> stack1 = new Stack<>();
+        Stack<BinaryTree> stack2 = new Stack<>();
+
+        stack1.push(root);
+        while ( !stack1.isEmpty() )
         {
-            while (root != null)
-            {
-                root.setData(-root.getData());
-                stack.push(root);
-                root = root.getLeft();
-            }
+            BinaryTree currentNode = stack1.pop();
+            stack2.push(currentNode);
 
-            if (stack.isEmpty())
-            {
-                break;
-            }
+            if(currentNode.getLeft() != null)
+                stack1.push(currentNode.getLeft());
 
-            root = stack.pop();
-            if (root.getData() < 0)
-            {
-                root.setData(-root.getData());
-                stack.push(root);
-                root = root.getRight();
-            }
-            else
-            {
-                System.out.println(root.getData());
-                root = null;
-            }
+            if(currentNode.getRight() != null)
+                stack1.push(currentNode.getRight());
+
+        }
+
+        while(!stack2.isEmpty()){
+            System.out.println(stack2.pop().getData());
         }
     }
 
-    static void leverlOrder(BinaryTree root)
+    static void levelOrder(BinaryTree root)
     {
-        Queue<BinaryTree> queue = new LinkedList<BinaryTree>();
+        if(root == null)
+            return;
+        Queue<BinaryTree> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty())
         {
-            BinaryTree temp=queue.remove();
-            System.out.println(temp.getData());
-            if (temp.getLeft() != null)
+            BinaryTree currentNode=queue.poll();
+            System.out.println(currentNode.getData());
+            if (currentNode.getLeft() != null)
             {
-                queue.add(temp.getLeft());
+                queue.add(currentNode.getLeft());
             }
-            if (temp.getRight() != null)
+            if (currentNode.getRight() != null)
             {
-                queue.add(temp.getRight());
+                queue.add(currentNode.getRight());
             }
         }
 
@@ -159,18 +146,18 @@ public class Traversal
         root.getLeft().setRight(new BinaryTree(5));
         root.getRight().setLeft(new BinaryTree(6));
         root.getRight().setRight(new BinaryTree(7));
-//        inorder(root);
-//        System.out.println();
-//        inoderNR(root);
-//        System.out.println();
-//        preOrder(root);
-//        System.out.println();
-//        preOrderNR(root);
-//        System.out.println();
-//        postOrder(root);
-//        System.out.println();
-//        postOrderNR(root);
-//        System.out.println();
-        leverlOrder(root);
+        inorder(root);
+        System.out.println();
+        inoderNR(root);
+        System.out.println();
+        preOrder(root);
+        System.out.println();
+        preOrderNR(root);
+        System.out.println();
+        postOrder(root);
+        System.out.println();
+        postOrderNR(root);
+        System.out.println();
+        levelOrder(root);
     }
 }
