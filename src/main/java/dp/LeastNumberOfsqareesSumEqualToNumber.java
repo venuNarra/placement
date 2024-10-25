@@ -8,20 +8,20 @@ package dp;
 public class LeastNumberOfsqareesSumEqualToNumber {
 	
 	public static int numberOfSquares(int n) {
-		int minSqares[] = new int[n+1];
+		int[] minSqarees = new int[n+1];
 		for (int i = 1; i <= n; i++)
-			minSqares[i] = i;
+			minSqarees[i] = i;
 		if (n <= 3)
-			return minSqares[n];
+			return minSqarees[n];
 		for (int i = 4; i <= n; i++) {
 			for (int j = (int) Math.sqrt(i); j > 0; j--) {
-				minSqares[i] = Math.min(minSqares[i], 1 + minSqares[i - j * j]);
+				minSqarees[i] = Math.min(minSqarees[i], 1 + minSqarees[i - j * j]);
 			}
 		}
 		for(int i=0;i<=n;i++)
-			System.out.print(minSqares[i]+" ");
+			System.out.print(minSqarees[i]+" ");
 		System.out.println();
-		return minSqares[n];
+		return minSqarees[n];
 	}
 
 	public static void main(String[] args) {

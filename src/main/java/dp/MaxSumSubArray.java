@@ -1,7 +1,7 @@
 package dp;
 
 public class MaxSumSubArray {
-	private static int maxSumSubArray(int a[]) {
+	private static int maxSumSubArray(int[] a) {
 		int max = a[0];
 		int currMax = a[0];
 		int start = 0;
@@ -26,7 +26,7 @@ public class MaxSumSubArray {
 	}
 
 	public static void main(String[] args) {
-		int a[] = { -2, -3, 4, -1, -2, 6 };
+		int[] a = { -2, -3, 4, -1, -2, 6 };
 		System.out.println(maxSumSubArray(a));
 	}
 }

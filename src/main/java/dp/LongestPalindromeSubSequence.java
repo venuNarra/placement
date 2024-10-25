@@ -3,11 +3,15 @@ package dp;
 public class LongestPalindromeSubSequence {
 	static int longestPalindromeSubSequence(String A) {
 		int n = A.length();
-		int M[][] = new int[n][n];
+		int[][] M = new int[n][n];
+
+		// Base cases
 		for (int i = 0; i < n; i++)
 			M[i][i] = 1;
 		for (int i = 0; i < n - 1; i++)
 			M[i][i + 1] = 1 + (A.charAt(i) == A.charAt(i + 1) ? 1 : 0);
+
+
 		for (int l = 3; l <= n; l++)
 			for (int i = 0; i <= n - l; i++) {
 				int j = i + l - 1;

@@ -11,7 +11,7 @@ public class LongestPalindromeSubString {
 		int n = A.length();
 		int start = 0;
 		int length = 0;
-		int M[][] = new int[n][n];
+		int[][] M = new int[n][n];
 		for (int i = 0; i < n; i++) {
 			M[i][i] = 1;
 		}

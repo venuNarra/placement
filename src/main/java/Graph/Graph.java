@@ -7,9 +7,8 @@ import java.util.Queue;
 
 public class Graph {
 	private int V;
-	private List<Integer> adj[];
+	private List<Integer>[] adj;
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	Graph(int v){
 		this.V=v;
 		this.adj=new LinkedList[v];
@@ -21,8 +20,8 @@ public class Graph {
 		this.adj[u].add(v);
 	}
 	void BFS(int s) {
-		boolean visited[]= new boolean[V];
-		Queue<Integer> queue=new LinkedList<Integer>();
+		boolean[] visited= new boolean[V];
+		Queue<Integer> queue=new LinkedList<>();
 		queue.add(s);
 		while(!queue.isEmpty()) {
 			s=queue.poll();
@@ -45,13 +44,13 @@ public class Graph {
 		
 	}
 	void DFS(int s) {
-		boolean visited[]=new boolean[V];
+		boolean[] visited=new boolean[V];
 		DFSUtil(s,visited);
 	}
-	void DFSUtil(int u,boolean visited[]){
+	void DFSUtil(int u,boolean[] visited){
 		System.out.println(u+" ");
 		visited[u]=true;
-	for(int v: adj[u]) {
+		for(int v: adj[u]) {
 			if(!visited[v])
 				DFSUtil(v, visited);
 		}
@@ -64,13 +63,13 @@ public class Graph {
 //		}
 	}
 	void TopoSortBFS(){
-		int indegree[]=new int[V];
+		int[] indegree=new int[V];
 		
 		for(int i=0;i<V;i++) {
 			for(int v:adj[i])
 				indegree[v]++;
 		}
-		Queue<Integer> queue=new LinkedList<Integer>();
+		Queue<Integer> queue=new LinkedList<>();
 		for(int i=0;i<V;i++)
 			if(indegree[i]==0)
 				queue.add(i);
