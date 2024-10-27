@@ -2,7 +2,7 @@ package arrays;
 
 public class BinarySearch {
 
-	static int binarySearch(int a[], int n) {
+	static int binarySearch(int[] a, int n) {
 		if(a == null || a.length ==0)
 			return -1;
 		int l = 0, r = a.length - 1;
@@ -19,7 +19,7 @@ public class BinarySearch {
 
 	}
 
-	static int binarySearchRecur(int a[], int l, int r, int n) {
+	static int binarySearchRecur(int[] a, int l, int r, int n) {
 		if (l > r)
 			return -1;
 		int mid = l + (r - l) / 2;
@@ -32,7 +32,7 @@ public class BinarySearch {
 	}
 
 	public static void main(String[] args) {
-		int a[] = { 2, 6, 13, 16, 21, 34, 56 };
+		int[] a = { 2, 6, 13, 16, 21, 34, 56 };
 		System.out.println(binarySearchRecur(a, 0, a.length, 3));
 	}
 

@@ -10,38 +10,47 @@ public class LongestPalindromeSubString {
 		
 		int n = A.length();
 		int start = 0;
-		int length = 0;
-		int[][] M = new int[n][n];
+		int maxLength = 1;
+
+		// DP table results as boolean
+		boolean[][] M = new boolean[n][n];
+
+		//base condition for length =1
 		for (int i = 0; i < n; i++) {
-			M[i][i] = 1;
+			M[i][i] = true;
 		}
+		// 	base condition for length =2
 		for (int i = 0; i < n - 1; i++) {
 			if (A.charAt(i) == A.charAt(i + 1)) {
-				M[i][i + 1] = 1;
+				M[i][i + 1] = true;
 				start = i;
-				length = 2;
+				maxLength = 2;
 			} else
-				M[i][i + 1] = 0;
+				M[i][i + 1] = false;
 		}
+
+		// Fill the DP table from lengths 3 onwards
 		for (int l = 3; l <= n; l++) {
 			for (int i = 0; i <= n - l; i++) {
-				int j = i + l - 1;
-				if (A.charAt(i) == A.charAt(j) && M[i + 1][j - 1] == 1) {
-					M[i][j] = 1;
+				int j = i + l - 1; // this is critical
+				if (A.charAt(i) == A.charAt(j) && M[i + 1][j - 1]) {
+					M[i][j] = true;
 					start = i;
-					length = l;
+					maxLength = l;
 				} else
-					M[i][j] = 0;
+					M[i][j] = false;
 			}
 		}
-		System.out.println(start + " " + (start + length - 1));
-		System.out.println(A.substring(start, start + length));
+		System.out.println(start + " " + (start + maxLength - 1));
+		System.out.println(A.substring(start, start + maxLength));
+
+		// Optional: Print the DP table
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++)
 				System.out.print(M[i][j] + " ");
 			System.out.println();
 		}
-		return length;
+		return maxLength;
 
 	}
 }

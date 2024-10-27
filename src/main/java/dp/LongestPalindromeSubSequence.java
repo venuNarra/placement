@@ -5,13 +5,13 @@ public class LongestPalindromeSubSequence {
 		int n = A.length();
 		int[][] M = new int[n][n];
 
-		// Base cases
+		// Base cases for length 1 & 2
 		for (int i = 0; i < n; i++)
 			M[i][i] = 1;
 		for (int i = 0; i < n - 1; i++)
 			M[i][i + 1] = 1 + (A.charAt(i) == A.charAt(i + 1) ? 1 : 0);
 
-
+		// Fill the DP table from the length 3 onwards
 		for (int l = 3; l <= n; l++)
 			for (int i = 0; i <= n - l; i++) {
 				int j = i + l - 1;
@@ -21,13 +21,16 @@ public class LongestPalindromeSubSequence {
 					M[i][j] = Math.max(M[i + 1][j], M[i][j - 1]);
 
 			}
+		// Optional: Print the DP table for debugging
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++)
 				System.out.print(M[i][j] + " ");
 			System.out.println();
 		}
+
+		// Fetch and print the longest palindromic subsequence
 		fecthSequence(M, A);
-		return M[0][n - 1];
+		return M[0][n - 1]; // return the 0 to n-1 length string result
 	}
 
 	private static void fecthSequence(int[][] M, String A) {
@@ -36,24 +39,24 @@ public class LongestPalindromeSubSequence {
 		int j = n - 1;
 		int index = M[i][j];
 		int start = 0;
-		char[] result = new char[index + 1];
-		result[index--] = '\0';
-		while (i < n - 1 && j > 0) {
+		char[] result = new char[index];
+		int end = index -1;
+		// Reconstruct the palindromic subsequence
+		while (i <= j) {
 			if (A.charAt(i) == A.charAt(j)) {
-				result[index] = A.charAt(i);
-				System.out.println(index + "  " + start);
-				if (index != start)
-					result[start] = A.charAt(i);
+				result[start] = A.charAt(i);
+				result[end] = A.charAt(i);
+				System.out.println(end + "  " + start);
 				i++;
 				j--;
 				start++;
-				index--;
+				end--;
 			} else if (M[i][j - 1] > M[i + 1][j])
 				j--;
 			else
 				i++;
 		}
-		System.out.println(result);
+		System.out.println(new String(result));
 	}
 
 	public static void main(String[] args) {

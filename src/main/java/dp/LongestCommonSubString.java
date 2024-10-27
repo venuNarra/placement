@@ -3,7 +3,7 @@ package dp;
 public class LongestCommonSubString {
 	public static void main(String[] args) {
 		String str1 = "loloi";
-		String str2 = "philologist";
+		String str2 = "philoloist";
 
 		System.out.println(longestCommonSubString(str1, str2));
 	}
@@ -11,7 +11,7 @@ public class LongestCommonSubString {
 	private static int longestCommonSubString(String A, String B) {
 
 		int max = 0; // Stores the length of the longest common substring
-		int start = 0; // Stores the end position of the longest common substring in A
+		int endIndex = 0; // Stores the end position of the longest common substring in A
 		int[][] M = new int[A.length() + 1][B.length() + 1];
 
 		// Good to have it here; but java will takes care of automatically the zero initialisations
@@ -27,20 +27,24 @@ public class LongestCommonSubString {
 					M[i][j] = 1 + M[i - 1][j - 1];
 					if (max < M[i][j]) {
 						max = M[i][j];
-						start = i;
+						endIndex = i;
 					}
 				} else {
 					M[i][j] = 0;
 				}
 			}
 		}
+
+		// Optional: Print the DP table for verification
 		for (int i = 0; i <= A.length(); i++) {
 			for (int j = 0; j <= B.length(); j++)
 				System.out.print(M[i][j] + " ");
 			System.out.println();
 		}
-		System.out.println(A.substring(start - max, max));
-		return max;
+
+		// Print the longest common substring
+		System.out.println(A.substring(endIndex - max, endIndex));
+		return max; // Return the length of the longest common substring
 
 	}
 }

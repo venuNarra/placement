@@ -35,16 +35,18 @@ public class LongestCommonSubSequence {
 			System.out.println();
 		}
 		fetchSequence(M, A, B);
-		return M[A.length()][B.length()];
+		return M[A.length()][B.length()]; // last value of the matrix has the answer
 	}
 
 	private static void fetchSequence(int[][] M, String A, String B) {
 
 		int i = A.length();
 		int j = B.length();
-		int index = M[A.length()][B.length()];
-		char[] result = new char[index + 1];
-		result[index--] = '\0';
+		int lcsLength = M[i][j]; // length of the lcs
+		char[] result = new char[lcsLength];
+		int index = lcsLength -1;
+
+		// Traverse the DP table to construct the LCS sequence
 		while (i > 0 && j > 0) {
 			if (A.charAt(i-1) == B.charAt(j-1)) {
 				result[index--] = A.charAt(i-1);
@@ -55,6 +57,6 @@ public class LongestCommonSubSequence {
 			} else
 				i--;
 		}
-		System.out.println(result);
+		System.out.println(new String(result));
 	}
 }
