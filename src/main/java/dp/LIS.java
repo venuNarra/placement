@@ -1,5 +1,7 @@
 package dp;
 
+import java.util.Arrays;
+
 public class LIS {
 	public static void main(String[] args) {
 		int[] arr = { 10, 22, 9, 33, 21, 50, 41, 60 };
@@ -9,19 +11,20 @@ public class LIS {
 	private static int lis(int[] a) {
 
 		int[] LIS = new int[a.length];
-		int max = 0;
-		for (int i = 0; i < a.length; i++) {
-			LIS[i] = 1;
-		}
+		int maxLength = 1;
+
+		// Each element initialized with 1 as each element is a subsequence of length 1
+		Arrays.fill(LIS, 1);
+
+		// Build the LIS array
 		for (int i = 1; i < a.length; i++) {
 			for (int j = 0; j < i; j++) {
 				if (a[i] > a[j] && LIS[i] < (LIS[j] + 1))
 					LIS[i] = LIS[j] + 1;
 			}
+			// Track the maximum length value of LIS during the loop itself
+			maxLength = Math.max(maxLength, LIS[i]);
 		}
-        for (int li : LIS)
-            if (max < li)
-                max = li;
-		return max;
+		return maxLength;
 	}
 }

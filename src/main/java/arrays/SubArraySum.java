@@ -1,8 +1,8 @@
-package dp;
+package arrays;
 
 import java.util.*;
 
-class Solution {
+class SubArraySum {
     public static List<List<Integer>> subarraySumOptimised(int[] nums, int k) {
         int count=0;
 
