@@ -7,8 +7,8 @@ public class AnagramSearch {
 		int m = patt.length();
 		int n = txt.length();
 		int MAX = 256;
-		int countP[] = new int[MAX];
-		int countT[] = new int[MAX];
+		int[] countP = new int[MAX];
+		int[] countT = new int[MAX];
 		for (int i = 0; i < m; i++) {
 			countP[txt.charAt(i)]++;
 			countT[patt.charAt(i)]++;

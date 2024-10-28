@@ -3,7 +3,7 @@ package Strings;
 public class TrieNode {
 	char data;
 	boolean isEndOfString;
-	TrieNode child[]=new TrieNode[26];
+	TrieNode[] child=new TrieNode[26];
 	
 	TrieNode() {
 		// TODO Auto-generated constructor stub

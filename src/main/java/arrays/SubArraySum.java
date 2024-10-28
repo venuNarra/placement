@@ -48,6 +48,25 @@ class SubArraySum {
         return new ArrayList<>();
     }
 
+    public static List<Integer> firstSubsequence(int[] nums, int k){
+        List<Integer> result= new ArrayList<>();
+            if(firstSubsequenceUtil(nums,k, 0, result))
+                return result;
+        return new ArrayList<>();
+    }
+
+    public static boolean firstSubsequenceUtil(int[] nums, int k, int index, List<Integer> result){
+        if( k==0)
+            return true;
+        if(index == nums.length || k < 0)
+            return false;
+        result.add(nums[index]);
+        if(firstSubsequenceUtil(nums,k-nums[index], index +1, result))
+            return true;
+        result.remove(result.size()-1);
+        return firstSubsequenceUtil(nums,k,index+1,result);
+    }
+
     public static List<Integer> longestsubarraySum(int[] nums, int k) {
         int maxLength=0;
         List<Integer> result= new ArrayList<>();
@@ -155,6 +174,8 @@ class SubArraySum {
          }
         return count;
     }
+
+
     public static void main(String[] args) {
         int[] nums= { 1, 4, 0, 0, 3, 10, 5, 2 };
         int k=5;
@@ -165,6 +186,7 @@ class SubArraySum {
         System.out.println("firstsubarraySum:" + firstsubarraySum(nums,k));
         System.out.println("longestsubarraySum:" + longestsubarraySum(nums,k));
         System.out.println("lowestsubarraySum:" + lowestsubarraySum(nums,k));
+        System.out.println("firstsubsequence:" + firstSubsequence(nums,k));
 
     }
 }
