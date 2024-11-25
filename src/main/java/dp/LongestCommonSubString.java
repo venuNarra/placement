@@ -3,7 +3,7 @@ package dp;
 public class LongestCommonSubString {
 	public static void main(String[] args) {
 		String str1 = "loloi";
-		String str2 = "philoloist";
+		String str2 = "philolost";
 
 		System.out.println(longestCommonSubString(str1, str2));
 	}

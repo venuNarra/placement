@@ -12,9 +12,9 @@ public class LongestPalindromeSubSequence {
 			M[i][i + 1] = 1 + (A.charAt(i) == A.charAt(i + 1) ? 1 : 0);
 
 		// Fill the DP table from the length 3 onwards
-		for (int l = 3; l <= n; l++)
-			for (int i = 0; i <= n - l; i++) {
-				int j = i + l - 1;
+		for (int length = 3; length <= n; length++)
+			for (int i = 0; i <= n - length; i++) {
+				int j = i + length - 1;    // critical
 				if (A.charAt(i) == A.charAt(j))
 					M[i][j] = 2 + M[i + 1][j - 1];
 				else
@@ -60,7 +60,7 @@ public class LongestPalindromeSubSequence {
 	}
 
 	public static void main(String[] args) {
-		String str = "abcedcbaa";
+		String str = "abcedcbaa";// abcedcbaa ; a ; ab; abc ; abce;
 		System.out.println(longestPalindromeSubSequence(str));
 	}
 }

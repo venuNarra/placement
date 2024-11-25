@@ -3,7 +3,7 @@ package dp;
     public class SubsequenceSumCounter {
 
         public static int subsetsSum(int[] nums, int target){
-            int[][] M=new int[nums.length][target+1];
+            int[][] M=new int[nums.length][target+1];   // #of ways to achieve target using i+1 elements
             // Initialise the base cases
             for(int i=0;i<nums.length;i++)
                 M[i][0]=1;
@@ -13,7 +13,7 @@ package dp;
                     if(j-nums[i] >=0)
                         M[i][j] = M[i-1][j] + M[i-1][j-nums[i]];
                     else
-                        M[i][j]=M[i-1][j];
+                        M[i][j] = M[i-1][j];
 
             for(int i=0;i< nums.length;i++) {
                 for (int j = 0; j <= target; j++)

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,7 +20,39 @@ public class MergeIntervals {
 		newList.add(temp);
 		return newList;
 	}
+	public static int[][] merge(int[][] intervals) {
+		// Base case: if intervals are empty, return an empty array
+		if (intervals.length == 0) {
+			return new int[0][0];
+		}
 
+		// Sort the intervals by the starting time
+		Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+
+		List<int[]> merged = new ArrayList<>();
+
+		// Initialize the first interval to compare with
+		int[] currentInterval = intervals[0];
+
+		for (int i = 1; i < intervals.length; i++) {
+			// If the current interval overlaps with the next one
+			if (currentInterval[1] >= intervals[i][0]) {
+				// Merge them by updating the end time
+				currentInterval[1] = Math.max(currentInterval[1], intervals[i][1]);
+			} else {
+				// No overlap, add the current interval to the result
+				merged.add(currentInterval);
+				// Move to the next interval
+				currentInterval = intervals[i];
+			}
+		}
+
+		// Add the last interval
+		merged.add(currentInterval);
+
+		// Convert List to int[][]
+		return merged.toArray(new int[merged.size()][]);
+	}
 	public static void main(String[] args) {
 		// {6,8}, {1,9}, {2,4}, {4,7}
 		MergeIntervals mergeIntervals = new MergeIntervals();

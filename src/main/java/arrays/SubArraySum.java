@@ -14,14 +14,14 @@ class SubArraySum {
         for(int i=0;i<nums.length;i++){
             sum+=nums[i];
             if(map.containsKey(sum-k)){
-                count++;
+                count+=map.get(sum-k);
                 List<Integer> subarray= new ArrayList<>();
                 System.out.println("Solution: " +map.get(sum-k)+","+i);
                 for(int j=map.get(sum-k); j<=i;j++)
                     subarray.add(nums[j]);
                 result.add(subarray);
             }
-            map.put(sum,i+1);
+            map.put(sum,map.getOrDefault(sum,0)+1);
         }
         return result;
     }
@@ -179,14 +179,14 @@ class SubArraySum {
     public static void main(String[] args) {
         int[] nums= { 1, 4, 0, 0, 3, 10, 5, 2 };
         int k=5;
-        System.out.println(subarraySumBruteforce(nums, k));
-        System.out.println(subarraySumUsingPreSumCalculator(nums, k));
-        System.out.println(subarraySumUsingSlidingWindow(nums, k));
-        System.out.println("Total solutions:"+subarraySumOptimised(nums, k));
-        System.out.println("firstsubarraySum:" + firstsubarraySum(nums,k));
-        System.out.println("longestsubarraySum:" + longestsubarraySum(nums,k));
-        System.out.println("lowestsubarraySum:" + lowestsubarraySum(nums,k));
-        System.out.println("firstsubsequence:" + firstSubsequence(nums,k));
+//        System.out.println(subarraySumBruteforce(nums, k));
+//        System.out.println(subarraySumUsingPreSumCalculator(nums, k));
+       System.out.println(subarraySumUsingSlidingWindow(nums, k));
+ //       System.out.println("Total solutions:"+subarraySumOptimised(nums, k));
+//        System.out.println("firstsubarraySum:" + firstsubarraySum(nums,k));
+//        System.out.println("longestsubarraySum:" + longestsubarraySum(nums,k));
+//        System.out.println("lowestsubarraySum:" + lowestsubarraySum(nums,k));
+//        System.out.println("firstsubsequence:" + firstSubsequence(nums,k));
 
     }
 }
