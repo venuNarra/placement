@@ -71,8 +71,8 @@ public class SubsequenceSumK {
 
     public static void main(String[] args) {
         int[] a = {1, -1, 2, 3, 7, -5};
-        int sum=2;
-        System.out.println(subSequenceSumK(a, sum));
-        subSequenceSumKPrint(a,sum);
+        int K=2;
+        System.out.println(subSequenceSumK(a, K));
+        subSequenceSumKPrint(a,K);
     }
 }

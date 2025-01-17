@@ -44,13 +44,14 @@ class Edge {
 }
 
 public class Dijkstra {
+    // This is main algorithm
     public static void computePaths(Vertex source) {
         source.minDistance = 0.;
-        PriorityQueue<Vertex> vertexQueue = new PriorityQueue<Vertex>();
-        vertexQueue.add(source);
+        PriorityQueue<Vertex> priorityQueue = new PriorityQueue<Vertex>();
+        priorityQueue.add(source);
 
-        while (!vertexQueue.isEmpty()) {
-            Vertex u = vertexQueue.poll();
+        while (!priorityQueue.isEmpty()) {
+            Vertex u = priorityQueue.poll();
 
             // Visit each edge exiting u
             for (Edge e : u.adjacencies) {
@@ -58,10 +59,10 @@ public class Dijkstra {
                 double weight = e.weight;
                 double distanceThroughU = u.minDistance + weight;
                 if (distanceThroughU < v.minDistance) {
-                    vertexQueue.remove(v);
+                   //priorityQueue.remove(v);
                     v.minDistance = distanceThroughU;
                     v.previous = u;
-                    vertexQueue.add(v);
+                    priorityQueue.add(v);
                 }
             }
         }
